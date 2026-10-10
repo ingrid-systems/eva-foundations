@@ -9,29 +9,25 @@ Dit bestand beschrijft hoe mijn MailBlue is ingericht. De MailBlue-skill leest h
 - [datum]: bestand aangemaakt
 
 ## Lijsten
-Bron bij het opstellen: naam, ID, aantal, en het veld Omschrijving en de herinneringstekst van de lijst in MailBlue.
-Hoofdlijsten (algemene mails en nieuwsbrieven):
+Bron bij het opstellen: naam, ID, aantal actieve contacten, en het veld Lijstbeschrijving en de herinneringstekst van de lijst in MailBlue.
+Twee groepen. Een lijst die hier niet staat, bestaat voor de skill niet.
+
+1. In het dashboard (letterlijk het blok "Lijsten in het dashboard"):
 | Lijst | ID | Rol | Actieve contacten op [datum] |
 |---|---|---|---|
-| [KLANTEN] | [id] | hoofdlijst klanten | [aantal] |
-| [LEADS] | [id] | hoofdlijst leads | [aantal] |
+| [[KLANTEN] Programma A] | [id] | [klantenlijst programma A] | [aantal] |
+| [[LEADS]] | [id] | [hoofdlijst leads] | [aantal] |
 
-Lijsten per programma of aanbod:
-| Lijst | ID | Rol | Hoort bij |
-|---|---|---|---|
-| [[KLANTEN] Programma A] | [id] | klantenlijst | [programma A] |
-
-Regels:
-- [bijv. iedereen staat op precies één programmalijst, altijd die van het hoogste programma]
-- [bijv. bij een upgrade schrijft de upgrade-automation uit van de oude programmalijst]
-
-Twee groepen. Een lijst die hier niet staat, bestaat voor de skill niet.
-1. In het dashboard: [namen]
 2. Wel in gebruik, niet in het dashboard (per lijst de rol en wanneer iemand erop komt):
 | Lijst | ID | Rol | Iemand komt erop als |
 |---|---|---|---|
 | [[KLANTEN] Programma C] | [id] | [klantenlijst van een aanbod dat alleen nog als kassakoopje verkocht wordt] | [koopt het kassakoopje] |
 | [[WAITLIST] Programma A] | [id] | [wachtlijst] | [schrijft zich in op de wachtlijstpagina] |
+
+Regels:
+- [bijv. iedereen staat op precies één programmalijst, altijd die van het hoogste programma]
+- [bijv. bij een upgrade schrijft de upgrade-automation uit van de oude programmalijst]
+- Een lijst met als omschrijving ARCHIEF in MailBlue loopt niet meer: niet voorstellen, niet meetellen, niemand op zetten
 
 ## Tags
 Bron bij het opstellen: tagnaam, aantal contacten en het veld Omschrijving van de tag in MailBlue.
@@ -104,7 +100,7 @@ Wat ik altijd zelf doe in MailBlue:
 - mappen op campagnes zetten
 - automations aanmaken, dupliceren, verwijderen, de starttrigger zetten, stappen toevoegen
 - bulkwijzigingen op lijsten en contacten
-- alles verwijderen: Claude markeert, ik verwijder
+- campagnes, automations, lijsten en contacten verwijderen: Claude markeert, ik verwijder (tags en stappen in een automation mag Claude verwijderen, na mijn ja per item)
 
 Wat Claude nooit doet:
 - [bijv. contacten uitschrijven zonder dat ik het per actie bevestig]

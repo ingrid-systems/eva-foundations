@@ -13,7 +13,7 @@
       "name": "eva-assistants",
       "source": "./plugins/eva-assistants",
       "description": "Assistenten van het EVA-systeem die uitvoeren in een extern systeem en alleen hun eigen structuurbestand in About Me/Systeem/ bijhouden. Nu: MailBlue Assistant.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Ingrid Staal"
       },

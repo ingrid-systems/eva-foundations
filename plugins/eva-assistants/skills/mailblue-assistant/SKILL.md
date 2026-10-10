@@ -33,8 +33,8 @@ Lezen mag altijd. Schrijven doe je alleen na een bevestiging van de eigenaar, é
 | Campagne hernoemen | Composio `ACTIVE_CAMPAIGN_EDIT_CAMPAIGN` (veld name) |
 | Mappen (labels) aanmaken en op automations zetten | Composio (proxy: `/api/3/labels`, `/api/3/automationLabels`) |
 | Segment aanmaken, oplijsten, doorrekenen | Composio; doorrekenen met `ACTIVE_CAMPAIGN_LIST_SEGMENT_MATCH_ALL`, page_size 1, het aantal staat in `page.total` |
-| Tags aanmaken, hernoemen, verwijderen; tag op een contact zetten of weghalen; lijst aanmaken | Composio |
-| Bestaande stap in een automation wijzigen (wachttijd, lijst in een inschrijfblok) of verwijderen | Composio, altijd het volledige blok in de PUT; bij een lijst eerst naam en ID opzoeken, de API controleert niet of de lijst bestaat |
+| Tags aanmaken, hernoemen, verwijderen; tag op een contact zetten of weghalen; lijst aanmaken | Composio; verwijderen alleen na een expliciet ja per tag |
+| Bestaande stap in een automation wijzigen (wachttijd, lijst in een inschrijfblok) of verwijderen | Composio, altijd het volledige blok in de PUT; bij een lijst eerst naam en ID opzoeken, de API controleert niet of de lijst bestaat. Verwijderen alleen na een expliciet ja per stap: zeg eerst welke stappen weg kunnen en waarom, wacht op het ja, haal ze dan weg |
 | Voorwaarde van een als/anders-blok lezen | Composio `ACTIVE_CAMPAIGN_GET_SEGMENTS_V2` met het segment-ID uit het blok |
 | Contact in of uit een automation zetten | Composio, na bevestiging |
 | Omschrijving van een tag schrijven of wijzigen | Composio `ACTIVE_CAMPAIGN_UPDATE_A_TAG`; eerst naam en type ophalen en ongewijzigd meesturen, je verandert alleen de omschrijving |
@@ -46,7 +46,7 @@ Wat niet via een koppeling kan en dus bij de eigenaar in MailBlue ligt:
 - een map op een campagne zetten (mappen komen wel mee bij dupliceren)
 - een automation aanmaken, dupliceren of verwijderen; de starttrigger zetten of wijzigen; een stap toevoegen; de voorwaarde van een als/anders wijzigen; stappen van externe apps (zoals Google Sheets) instellen
 - bulkwijzigingen op lijsten of contacten (filteren en in één keer uitschrijven is in MailBlue sneller en veiliger)
-- verwijderen, van wat dan ook: jij markeert, de eigenaar verwijdert
+- een campagne, automation, lijst of contact verwijderen: jij markeert, de eigenaar verwijdert. Tags en stappen in een automation kun je wel verwijderen, alleen na een ja per item (zie de tabel)
 
 Deze verdeling verschuift: de gewone koppeling kon bij de start 64 dingen en inmiddels bijna 300. Loop je tegen iets aan dat volgens deze tabel niet kan maar waar wel een tool voor blijkt te zijn, zeg dat dan en gebruik de tool; de tabel wordt bij een nieuwe versie van de skill bijgewerkt.
 
@@ -65,7 +65,7 @@ Ontbreekt een koppeling (geen ActiveCampaign-tools, of geen Composio-tools): zeg
 - Campagnes met minder dan 20 verzonden laat je uit vergelijkingen (automationmails met twee verzendingen staan anders bovenaan). Klikratio boven 100% betekent dubbele kliks: reken met unieke cijfers.
 - Verzendtijden uit de koppeling staan in UTC-5; reken om naar Nederlandse tijd.
 - Links naar MailBlue geef je als `https://<account>.activehosted.com/series/<id>` (automation) zodat de eigenaar meteen kan kijken.
-- Opschonen: jij markeert (map of `[VERWIJDEREN]` vooraan in de naam), de eigenaar verwijdert zelf in één keer.
+- Opschonen van campagnes en automations: jij markeert (map of `[VERWIJDEREN]` vooraan in de naam), de eigenaar verwijdert zelf in één keer. Tags mag je na een ja per tag zelf verwijderen.
 - De ingebouwde AI van MailBlue laat je met rust: geen campagnes genereren vanuit opgeslagen templates, geen AI-editor op een mail. Die herbouwt de mail, vervangt eigen afbeeldingen en voegt een Engelse footerregel toe.
 
 ## Werkwijzen
@@ -81,7 +81,7 @@ Ontbreekt een koppeling (geen ActiveCampaign-tools, of geen Composio-tools): zeg
 1. Zoek in `mailblue.md` de automationtemplate voor dit soort (bijvoorbeeld verkoop en toegang) en de tagstructuur.
 2. Maak de nieuwe tags voor het aanbod aan volgens de voorvoegsels in het bestand, na bevestiging van de namen.
 3. De eigenaar dupliceert de template in MailBlue en zet de starttrigger op de nieuwe tag. Wacht daarop.
-4. Pas de kopie aan via Composio: de lijst in het inschrijfblok (eerst opzoeken), de tags in de acties, wachttijden. Vertel welke stappen je hebt gewijzigd en met welk ID.
+4. Pas de kopie aan via Composio: de lijst in het inschrijfblok (eerst opzoeken), de tags in de acties, wachttijden. De template is bewust uitgebreider dan de meeste aanbiedingen nodig hebben: zeg welke stappen dit aanbod niet gebruikt, en haal ze na een ja per stap weg. Vertel welke stappen je hebt gewijzigd of verwijderd en met welk ID.
 5. Mails: tekst schrijven, eigenaar plakt. De eigenaar zet de automation actief.
 
 ### Mappenplan uitvoeren
