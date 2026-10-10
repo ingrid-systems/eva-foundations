@@ -1,0 +1,32 @@
+{
+  "name": "ingrid-staal-eva-foundations",
+  "owner": {
+    "name": "Ingrid Staal"
+  },
+  "metadata": {
+    "description": "EVA Foundations van Ingrid Staal: de assistenten van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "eva-assistants",
+      "source": "./plugins/eva-assistants",
+      "description": "Assistenten van het EVA-systeem die uitvoeren in een extern systeem en alleen hun eigen structuurbestand in About Me/Systeem/ bijhouden. Nu: MailBlue Assistant.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Ingrid Staal"
+      },
+      "homepage": "https://e-va.nl",
+      "category": "marketing",
+      "tags": [
+        "eva foundations",
+        "eva hq",
+        "mailblue",
+        "activecampaign",
+        "e-mailmarketing",
+        "assistent"
+      ]
+    }
+  ]
+}
