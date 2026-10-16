@@ -2,7 +2,7 @@
 name: project-opzet
 description: Zet een nieuw Cowork-project op in de vaste Foundations-mapstructuur en levert de omschrijving als kant-en-klaar paste-blok. Twee routes. Route KLUS voor tijdelijk werk met een einddoel, dus een PROJECT-map plus een projectomschrijving op basis van PRISMA. Route MEDEWERKER voor doorlopend werk, dus een vaste rol met een eigen werkmap, lees- en schrijfgrenzen, gereedschap en delegatiegrenzen. Bewaakt de tekenlimiet van het instructieveld en zet wat daar niet in past in CLAUDE.md in de werkmap. TRIGGERS op "zet een nieuw project op", "richt dit project in", "nieuw Cowork-project", "project-opzet", "maak een projectomschrijving", "medewerker aannemen", "nieuwe rol", "functieomschrijving maken", "moet dit een project of een map worden", "is dit een klus of een rol", of elk verzoek om een nieuw project, een nieuwe rol of een nieuwe werkmap in te richten. Gebruik de skill ook wanneer iemand twijfelt tussen een tijdelijke klus en een doorlopende rol, of een bestaand project alsnog een goede omschrijving wil geven.
 metadata:
-  version: "2026-10-16"
+  version: "2026-10-16b"
 ---
 
 # Project-opzet skill
@@ -25,14 +25,14 @@ Een **werkmap** is een map met deze vaste inrichting waarin een project schrijft
 
 | Plek | Limiet | Waarvoor |
 |---|---|---|
-| Cowork-werkwijze (Instellingen) | ruim | wat in élk project geldt |
+| Cowork-werkwijze (Settings > General > Instructions for Claude, samen met de delegatiegrenzen; er is geen apart Cowork-veld) | ruim | wat in élk project geldt |
 | Projectinstructies-veld | **4000 tekens, kapt af zonder melding** | rol, grenszin, werkmap, delegatiegrenzen |
 | `CLAUDE.md` in de werkmap | geen, richtlijn onder 200 regels | vakregels, bronnen, do's en don'ts; wordt als eerste gelezen via de leesregel in de Cowork-werkwijze, niet in een gewone chat |
 | `README.md` en `MEMORY.md` | geen | navigatie en geheugen |
 
 ## Stap 0: de werkwijze controleren
 
-Controleer dit zelf, in je eigen context. De Cowork-werkwijze komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
+Controleer dit zelf, in je eigen context. De Cowork-werkwijze staat in Instructions for Claude en komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
 
 **Lever nooit een hele sectie of een complete werkwijze.** De gebruiker heeft er al een, en die bevat meer dan deze lijst: afspraken over About Me, over andere mappen, over Resources. Een blok met dezelfde kop leest als een vervanging en dan verdwijnt dat. Werk dus per regel.
 
@@ -41,7 +41,7 @@ Loop de regels hieronder langs en kijk welke er al staan, in welke bewoording da
 - **Staat een regel er al, ook in andere woorden**: laat hem met rust. Dubbel opnemen verandert niets.
 - **Staat er een regel die hier niet in voorkomt**: dat is de eigen werkwijze van de gebruiker en die is zijn zaak. Noem hem niet, vraag er niet naar, stel geen wijziging voor. Deze controle kijkt één kant op.
 - **Eén uitzondering**: regels die spreken van "primaire map", "primair gekoppeld" of "extra gekoppelde map" komen uit de oude werkwijze, toen een project één primaire map en extra mappen koppelde. Lever daarvoor de vervangende regel uit de lijst hieronder, met de instructie om de oude te vervangen.
-- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen (Instellingen, Cowork).
+- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen (Settings > General > Instructions for Claude).
 - **Staat er niets van dit alles**: dan heeft de gebruiker waarschijnlijk nog geen werkwijze. Lever dan wel het geheel, en zeg erbij dat dit een startpunt is dat hij zelf aanvult.
 
 Vul bij de controleregel de naam van de gebruiker in.
@@ -59,6 +59,9 @@ ABOUT ME
   About Me Edits.
 
 JE WERKMAP
+- Deze sectie en de secties SCHRIJVEN BUITEN JE WERKMAP, WERKBESTANDEN en
+  GEHEUGEN gelden alleen als er een map gekoppeld is. In een chat zonder map
+  doe je er niets mee.
 - Mijn complete AI Library is gekoppeld. Je werkmap is de map die in je
   projectinstructies onder WAT JE BEHEERT staat. Staat daar niets, vraag dan
   eerst welke map je werkmap is.
