@@ -1,0 +1,8 @@
+{
+  "name": "eva-system",
+  "version": "1.0.0",
+  "description": "Gereedschap voor je eigen EVA-systeem in Cowork. Nu: project-opzet, de skill waarmee je Systeembeheerder een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
+  "author": {
+    "name": "Ingrid Staal"
+  }
+}

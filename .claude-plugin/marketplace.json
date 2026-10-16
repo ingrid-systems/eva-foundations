@@ -4,8 +4,8 @@
     "name": "Ingrid Staal"
   },
   "metadata": {
-    "description": "EVA Foundations van Ingrid Staal: de assistenten van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
-    "version": "1.0.0",
+    "description": "EVA Foundations van Ingrid Staal: de assistenten en het systeemgereedschap van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
+    "version": "1.1.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -26,6 +26,25 @@
         "activecampaign",
         "e-mailmarketing",
         "assistent"
+      ]
+    },
+    {
+      "name": "eva-system",
+      "source": "./plugins/eva-system",
+      "description": "Gereedschap voor je eigen EVA-systeem in Cowork. Nu: project-opzet, de skill waarmee je Systeembeheerder een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ingrid Staal"
+      },
+      "homepage": "https://e-va.nl",
+      "category": "productivity",
+      "tags": [
+        "eva foundations",
+        "eva hq",
+        "cowork",
+        "systeembeheerder",
+        "medewerkers",
+        "project-opzet"
       ]
     }
   ]
