@@ -31,7 +31,7 @@
     {
       "name": "eva-system",
       "source": "./plugins/eva-system",
-      "description": "Gereedschap voor je eigen EVA-systeem in Cowork. Nu: project-opzet, de skill waarmee je Systeembeheerder een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
+      "description": "Gereedschap voor je eigen EVA-systeem in Cowork. Nu: project-opzet, de skill waarmee je HR Manager een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
       "version": "1.0.1",
       "author": {
         "name": "Ingrid Staal"
@@ -42,7 +42,7 @@
         "eva foundations",
         "eva hq",
         "cowork",
-        "systeembeheerder",
+        "hr manager",
         "medewerkers",
         "project-opzet"
       ]

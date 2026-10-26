@@ -6,7 +6,7 @@ Deze repo is de plugin-marketplace voor EVA Foundations van Ingrid Staal. Ook EV
 |---|---|
 | `eva-assistants` | De assistenten van het EVA-systeem. Nu: de MailBlue Assistant, die MailBlue (ActiveCampaign) voor je bedient via de koppelingen en zijn eigen structuurbestand `About Me/Systeem/mailblue.md` bijhoudt. |
 | `eva-adviseurs` | De adviseurs van het EVA-systeem. Nu: de Businesscoach, die meedenkt over je business op basis van je coachversies, je CEO Kompas en je persoonlijke aanvulling in About Me. |
-| `eva-system` | Gereedschap voor je eigen systeem in Cowork. Nu: `project-opzet`, de skill waarmee je Systeembeheerder een klus of een medewerker inricht: de werkmap, de functieomschrijving als paste-blok en de CLAUDE.md met vakregels. |
+| `eva-system` | Gereedschap voor je eigen systeem in Cowork. Nu: `project-opzet`, de skill waarmee je HR Manager een klus of een medewerker inricht: de werkmap, de functieomschrijving als paste-blok en de CLAUDE.md met vakregels. |
 
 ## Installeren (Claude chat, Claude Desktop, Cowork)
 
@@ -38,7 +38,7 @@ De Businesscoach werkt in Cowork met je complete AI Library gekoppeld. Hij leest
 
 Roep hem aan met @coach of vraag gewoon om advies over je business. Hij adviseert, schrijft geen content en past niets aan in je mappen.
 
-De project-opzet skill gebruik je in het project van je Systeembeheerder, met je complete AI Library gekoppeld. Vraag "neem de [rol] aan" of "zet een nieuw project op"; de skill leest je Cowork-werkwijze en de Rolprofielen uit `Operations/Administratie/Resources/` en levert de functieomschrijving als paste-blok.
+De project-opzet skill gebruik je in het project van je HR Manager, met je complete AI Library gekoppeld. Vraag "neem de [rol] aan" of "zet een nieuw project op"; de skill leest je Cowork-werkwijze en de Rolprofielen uit `Operations/Administratie/Resources/` en levert de functieomschrijving als paste-blok.
 
 ## Een update publiceren
 
