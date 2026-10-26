@@ -4,8 +4,8 @@
     "name": "Ingrid Staal"
   },
   "metadata": {
-    "description": "EVA Foundations van Ingrid Staal: de assistenten en het systeemgereedschap van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
-    "version": "1.1.0",
+    "description": "EVA Foundations van Ingrid Staal: de assistenten, de adviseurs en het systeemgereedschap van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
+    "version": "1.2.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -45,6 +45,25 @@
         "systeembeheerder",
         "medewerkers",
         "project-opzet"
+      ]
+    },
+    {
+      "name": "eva-adviseurs",
+      "source": "./plugins/eva-adviseurs",
+      "description": "Adviseurs van het EVA-systeem: ze staan naast jou, niet in het team, en denken mee op basis van wat er in About Me staat. Ze beheren geen werkmap en schrijven nergens in. Nu: de Businesscoach.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ingrid Staal"
+      },
+      "homepage": "https://e-va.nl",
+      "category": "productivity",
+      "tags": [
+        "eva foundations",
+        "eva hq",
+        "businesscoach",
+        "adviseur",
+        "strategie",
+        "ceo kompas"
       ]
     }
   ]
