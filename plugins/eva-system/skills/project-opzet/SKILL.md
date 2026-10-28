@@ -1,17 +1,17 @@
 ---
 name: project-opzet
-description: Zet een nieuw Cowork-project op in de vaste Foundations-mapstructuur en levert de omschrijving als kant-en-klaar paste-blok. Twee routes. Route KLUS voor tijdelijk werk met een einddoel, dus een PROJECT-map plus een projectomschrijving op basis van PRISMA. Route MEDEWERKER voor doorlopend werk, dus een vaste rol met een eigen werkmap, lees- en schrijfgrenzen, gereedschap en delegatiegrenzen. Bewaakt de tekenlimiet van het instructieveld en zet wat daar niet in past in CLAUDE.md in de werkmap. TRIGGERS op "zet een nieuw project op", "richt dit project in", "nieuw Cowork-project", "project-opzet", "maak een projectomschrijving", "medewerker aannemen", "nieuwe rol", "functieomschrijving maken", "moet dit een project of een map worden", "is dit een klus of een rol", of elk verzoek om een nieuw project, een nieuwe rol of een nieuwe werkmap in te richten. Gebruik de skill ook wanneer iemand twijfelt tussen een tijdelijke klus en een doorlopende rol, of een bestaand project alsnog een goede omschrijving wil geven.
+description: Zet een nieuw project op in de vaste Foundations-mapstructuur en levert de omschrijving als kant-en-klaar paste-blok. Twee routes. Route KLUS voor tijdelijk werk met een einddoel, dus een PROJECT-map plus een projectomschrijving op basis van PRISMA. Route MEDEWERKER voor doorlopend werk, dus een vaste rol met een eigen werkmap, lees- en schrijfgrenzen, gereedschap en delegatiegrenzen. Bewaakt de tekenlimiet van het instructieveld en zet wat daar niet in past in CLAUDE.md in de werkmap. TRIGGERS op "zet een nieuw project op", "richt dit project in", "nieuw project", "project-opzet", "maak een projectomschrijving", "medewerker aannemen", "nieuwe rol", "functieomschrijving maken", "moet dit een project of een map worden", "is dit een klus of een rol", of elk verzoek om een nieuw project, een nieuwe rol of een nieuwe werkmap in te richten. Gebruik de skill ook wanneer iemand twijfelt tussen een tijdelijke klus en een doorlopende rol, of een bestaand project alsnog een goede omschrijving wil geven.
 metadata:
-  version: "2026-10-16b"
+  version: "2026-10-28"
 ---
 
 # Project-opzet skill
 
-Richt een Cowork-project in volgens de vaste Foundations-structuur en levert de omschrijving als paste-blok. Twee routes, die een ander soort omschrijving opleveren.
+Richt een project in volgens de vaste Foundations-structuur en levert de omschrijving als paste-blok. Twee routes, die een ander soort omschrijving opleveren.
 
 ## Mapnamen
 
-Deze skill gebruikt standaardnamen. Wijken de namen van de gebruiker af (bijvoorbeeld "Bronnen" in plaats van "Resources"), dan staan die namen in zijn Cowork-werkwijze, die automatisch meekomt in elke sessie. Gebruik dan zijn namen; pas deze skill niet aan, want hij wordt via de marketplace bijgewerkt en een eigen aanpassing gaat dan verloren.
+Deze skill gebruikt standaardnamen. Wijken de namen van de gebruiker af (bijvoorbeeld "Bronnen" in plaats van "Resources"), dan staan die namen in zijn werkwijze, die automatisch meekomt in elke sessie. Gebruik dan zijn namen; pas deze skill niet aan, want hij wordt via de marketplace bijgewerkt en een eigen aanpassing gaat dan verloren.
 
 - Bronnenmap voor eigen uploads: **Resources**
 - Map voor wat Claude maakt: **Output**
@@ -25,14 +25,14 @@ Een **werkmap** is een map met deze vaste inrichting waarin een project schrijft
 
 | Plek | Limiet | Waarvoor |
 |---|---|---|
-| Cowork-werkwijze (Settings > General > Instructions for Claude, samen met de delegatiegrenzen; er is geen apart Cowork-veld) | ruim | wat in élk project geldt |
+| Werkwijze (Settings > Account > Instructions for Claude, samen met de delegatiegrenzen) | ruim | wat in élk project geldt |
 | Projectinstructies-veld | **4000 tekens, kapt af zonder melding** | rol, grenszin, werkmap, delegatiegrenzen |
-| `CLAUDE.md` in de werkmap | geen, richtlijn onder 200 regels | vakregels, bronnen, do's en don'ts; wordt als eerste gelezen via de leesregel in de Cowork-werkwijze, niet in een gewone chat |
+| `CLAUDE.md` in de werkmap | geen, richtlijn onder 200 regels | vakregels, bronnen, do's en don'ts; wordt als eerste gelezen via de leesregel in de werkwijze, alleen in een chat met gekoppelde map |
 | `README.md` en `MEMORY.md` | geen | navigatie en geheugen |
 
 ## Stap 0: de werkwijze controleren
 
-Controleer dit zelf, in je eigen context. De Cowork-werkwijze staat in Instructions for Claude en komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
+Controleer dit zelf, in je eigen context. De werkwijze staat in Instructions for Claude en komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
 
 **Lever nooit een hele sectie of een complete werkwijze.** De gebruiker heeft er al een, en die bevat meer dan deze lijst: afspraken over About Me, over andere mappen, over Resources. Een blok met dezelfde kop leest als een vervanging en dan verdwijnt dat. Werk dus per regel.
 
@@ -41,7 +41,7 @@ Loop de regels hieronder langs en kijk welke er al staan, in welke bewoording da
 - **Staat een regel er al, ook in andere woorden**: laat hem met rust. Dubbel opnemen verandert niets.
 - **Staat er een regel die hier niet in voorkomt**: dat is de eigen werkwijze van de gebruiker en die is zijn zaak. Noem hem niet, vraag er niet naar, stel geen wijziging voor. Deze controle kijkt één kant op.
 - **Eén uitzondering**: regels die spreken van "primaire map", "primair gekoppeld" of "extra gekoppelde map" komen uit de oude werkwijze, toen een project één primaire map en extra mappen koppelde. Lever daarvoor de vervangende regel uit de lijst hieronder, met de instructie om de oude te vervangen.
-- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen (Settings > General > Instructions for Claude).
+- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen (Settings > Account > Instructions for Claude).
 - **Staat er niets van dit alles**: dan heeft de gebruiker waarschijnlijk nog geen werkwijze. Lever dan wel het geheel, en zeg erbij dat dit een startpunt is dat hij zelf aanvult.
 
 Vul bij de controleregel de naam van de gebruiker in.
@@ -103,7 +103,7 @@ GEHEUGEN
   MEMORY.md komt dan alleen wat er is besloten en waarom, met datum, niet de
   regel zelf. Bestaat CLAUDE.md niet in die map, meld dat en stel voor hem
   aan te maken.
-- Het ingebouwde projectgeheugen van Cowork vervangt MEMORY.md niet. Wat je
+- Het ingebouwde projectgeheugen vervangt MEMORY.md niet. Wat je
   daar bewaart, zet je ook in MEMORY.md.
 - Wordt MEMORY.md langer dan ongeveer 40 regels, vat dan samen. Besluiten
   blijven altijd staan.
@@ -149,7 +149,7 @@ Een klus krijgt geen `CLAUDE.md`.
 
 ## Stap B: de projectomschrijving
 
-Je kunt het instructieveld niet zelf invullen. Lever een paste-blok en zeg erbij dat de gebruiker het zelf plakt. De vaste werkafspraken staan in de Cowork-werkwijze en komen niet in de omschrijving.
+Je kunt het instructieveld niet zelf invullen. Lever een paste-blok en zeg erbij dat de gebruiker het zelf plakt. De vaste werkafspraken staan in de werkwijze en komen niet in de omschrijving.
 
 1. **Vraag in gewone taal naar het doel.** Wat is dit project en wat ga je hier vooral doen? Dit komt altijd van de gebruiker; het is niet af te leiden uit About Me.
 2. **Vraag hoe ze geholpen willen worden.** Zelf een voorstel en kritisch meedenken, of per onderdeel een paar vragen.
@@ -186,13 +186,13 @@ DOELGROEP
 [Voor wie is dit bedoeld. Weglaten indien niet van toepassing.]
 ```
 
-Sluit af met: "Kopieer dit blok en plak het in de projectinstructies van dit project (Cowork-projectinstellingen). Ik kan dat veld niet zelf invullen." Geef daarna de controle uit "Na het plakken" mee.
+Sluit af met: "Kopieer dit blok en plak het in dit project onder Instructions (knop Edit). Ik kan dat veld niet zelf invullen." Geef daarna de controle uit "Na het plakken" mee.
 
 ---
 
 # Route MEDEWERKER
 
-Een medewerker is een Cowork-project voor doorlopend werk. Hij heeft een eigen werkmap, een functieomschrijving en gereedschap. Zeven stappen op volgorde. Laat na stap 5 het concept zien voordat je iets definitief maakt.
+Een medewerker is een project voor doorlopend werk. Hij heeft een eigen werkmap, een functieomschrijving en gereedschap. Zeven stappen op volgorde. Laat na stap 5 het concept zien voordat je iets definitief maakt.
 
 ## Stap 1: de rol
 
@@ -200,7 +200,7 @@ Vraag in gewone taal welk werk deze medewerker doet en vertaal dat naar één we
 
 Noem de rol naar zijn domein (Marketing, Finance, Sales), niet naar een activiteit: "Planning" of "Analyse" trekt vreemd werk aan en wordt een vergaarbak.
 
-Leg de rolnaam voor met de grenszin erbij, één zin die zegt wat hij wel bezit en wat niet. Voorbeeld: "de Marketing & Sales Manager bepaalt welke campagne er loopt en naar welk aanbod, de Ads Manager bedient het platform."
+Leg de rolnaam voor met de grenszin erbij, één zin die zegt wat hij wel bezit en wat niet. Voorbeeld: "de Marketing & Sales Manager bepaalt wat er te koop is en hoe mensen erbij komen, de Content Manager maakt de posts binnen dat kader."
 
 ## Stap 2: de werkmap
 
@@ -243,7 +243,7 @@ Bij twijfel ASK. Een mandaat groeit van ASK naar AUTO, niet andersom.
 
 ## Stap 6: de functieomschrijving
 
-Toon het concept, vraag wat er anders moet, lever daarna definitief. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in de Cowork-werkwijze en komen niet in de omschrijving.
+Toon het concept, vraag wat er anders moet, lever daarna definitief. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in de werkwijze en komen niet in de omschrijving.
 
 ```
 DOEL VAN DIT PROJECT
@@ -271,7 +271,7 @@ volledige bronnenlijst staan in CLAUDE.md in je werkmap.]
 
 Sluit af met:
 
-1. "Kopieer dit blok en plak het in de projectinstructies van dit project (Cowork-projectinstellingen). Ik kan dat veld niet zelf invullen."
+1. "Kopieer dit blok en plak het in dit project onder Instructions (knop Edit). Ik kan dat veld niet zelf invullen."
 2. De twee controles uit "Na het plakken".
 3. Eén regel over wat deze medewerker als eerste kan oppakken, zodat zijn MEMORY en README meteen gaan leven.
 4. Bij meer dan één medewerker tegelijk: neem ze één voor één aan en gebruik de eerste weken om te zien of de grenzen kloppen. Tien medewerkers die niets te doen hebben, is hetzelfde probleem als één vergaarbak.
@@ -280,7 +280,7 @@ Sluit af met:
 
 Alles wat lang is van nature gaat hierheen. Maak `CLAUDE.md` aan in de root van de werkmap, onder de 200 regels want het laadt in zijn geheel mee.
 
-Alleen wat specifiek is voor deze werkmap. Herhaal niets uit de Cowork-werkwijze (lees-, geheugen- en outputregels die overal gelden) en niets uit het instructieveld (rol, grenszin, wat hij beheert, delegatiegrenzen). Elke regel staat op één plek; wat op twee plekken staat, loopt uit elkaar.
+Alleen wat specifiek is voor deze werkmap. Herhaal niets uit de werkwijze (lees-, geheugen- en outputregels die overal gelden) en niets uit het instructieveld (rol, grenszin, wat hij beheert, delegatiegrenzen). Elke regel staat op één plek; wat op twee plekken staat, loopt uit elkaar.
 
 ```
 # [Rol] - werkinstructies
@@ -292,13 +292,13 @@ Alleen wat specifiek is voor deze werkmap. Herhaal niets uit de Cowork-werkwijze
 [Concreet en toetsbaar, niet abstract.]
 
 ## Output
-[Waar bestanden landen, welke naamgeving, welk format.]
+[Waar bestanden landen, welke naamgeving, welk formaat.]
 
 ## Do's en don'ts
 [Wat in dit vak steeds misgaat, en wat de gebruiker niet wil zien.]
 ```
 
-Zeg er bij de oplevering in één zin bij dat CLAUDE.md via de leesregel in de werkwijze als eerste gelezen wordt in elke Cowork-chat van dit project, zodat deze instructies niet in het instructieveld hoeven en dus niet afgekapt kunnen worden. In een gewone chat (zonder Cowork) wordt hij niet gelezen; dat is de eerste check als een medewerker zijn instructies niet lijkt te kennen. Test het meteen: nieuwe chat, "welke vakregels gelden hier?".
+Zeg er bij de oplevering in één zin bij dat CLAUDE.md via de leesregel in de werkwijze als eerste gelezen wordt in elke chat van dit project met gekoppelde map, zodat deze instructies niet in het instructieveld hoeven en dus niet afgekapt kunnen worden. In een chat zonder gekoppelde map wordt hij niet gelezen; dat is de eerste check als een medewerker zijn instructies niet lijkt te kennen. Test het meteen: nieuwe chat, "welke vakregels gelden hier?".
 
 CLAUDE.md is geen momentopname. Wordt er later een werkafspraak gemaakt die élke keer geldt, dan gaat die hierheen en niet in MEMORY.md; dat staat als regel in het GEHEUGEN-blok van de werkwijze uit stap 0.
 
@@ -328,7 +328,7 @@ Geef de gebruiker deze twee controles mee, één keer per project. Afkappen gebe
 - Elke werkmap krijgt bij aanmaak Output, Resources, README.md en MEMORY.md.
 - In de root van een werkmap staan alleen README.md, MEMORY.md en CLAUDE.md.
 - Verwijder of overschrijf nooit bestaande mappen of bestanden. Bestaat een map al, meld dat en vraag wat de gebruiker wil.
-- README.md, MEMORY.md en CLAUDE.md houden altijd die naam; die herkent Cowork zelf.
+- README.md, MEMORY.md en CLAUDE.md houden altijd die naam; die herkent Claude zelf.
 - In elk project is de complete hoofdmap (AI Library) gekoppeld. Alleen About Me Edits schrijft in About Me en in de aanboddocumenten, per wijziging na akkoord; dat project is geen medewerker.
 - Een nieuwe hoofdmap komt er alleen met expliciet akkoord van de gebruiker.
-- De werkafspraken en geheugenregels staan in de Cowork-werkwijze. Herhaal ze niet in de projectomschrijving.
+- De werkafspraken en geheugenregels staan in de werkwijze. Herhaal ze niet in de projectomschrijving.
