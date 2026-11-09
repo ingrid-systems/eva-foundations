@@ -36,7 +36,7 @@ De Businesscoach werkt in een chat of project met je complete AI Library gekoppe
 
 Roep hem aan met @coach of vraag gewoon om advies over je business. Hij adviseert, schrijft geen content en past niets aan in je mappen.
 
-De project-opzet skill gebruik je in het project van je HR Manager, met je complete AI Library gekoppeld. Vraag "neem de [rol] aan" of "zet een nieuw project op"; de skill leest je werkwijze (Instructions for Claude) en de Rolprofielen uit `Operations/Administratie/Resources/` en levert de functieomschrijving als paste-blok.
+De project-opzet skill gebruik je in het project van je HR Manager, met je complete AI Library gekoppeld. Vraag "neem de [rol] aan" of "zet een nieuw project op"; de skill leest je algemene instructies (Instructions for Claude) en de Rolprofielen uit `Operations/Administratie/Resources/` en levert de functieomschrijving als paste-blok.
 
 ## Een update publiceren
 

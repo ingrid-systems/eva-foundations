@@ -1,6 +1,6 @@
 {
   "name": "eva-system",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Gereedschap voor je eigen EVA-systeem. Nu: project-opzet, de skill waarmee je HR Manager een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
   "author": {
     "name": "Ingrid Staal"

@@ -2,7 +2,7 @@
 name: project-opzet
 description: Zet een nieuw project op in de vaste Foundations-mapstructuur en levert de omschrijving als kant-en-klaar paste-blok. Twee routes. Route KLUS voor tijdelijk werk met een einddoel, dus een PROJECT-map plus een projectomschrijving op basis van PRISMA. Route MEDEWERKER voor doorlopend werk, dus een vaste rol met een eigen werkmap, lees- en schrijfgrenzen, gereedschap en delegatiegrenzen. Bewaakt de tekenlimiet van het instructieveld en zet wat daar niet in past in CLAUDE.md in de werkmap. TRIGGERS op "zet een nieuw project op", "richt dit project in", "nieuw project", "project-opzet", "maak een projectomschrijving", "medewerker aannemen", "nieuwe rol", "functieomschrijving maken", "moet dit een project of een map worden", "is dit een klus of een rol", of elk verzoek om een nieuw project, een nieuwe rol of een nieuwe werkmap in te richten. Gebruik de skill ook wanneer iemand twijfelt tussen een tijdelijke klus en een doorlopende rol, of een bestaand project alsnog een goede omschrijving wil geven.
 metadata:
-  version: "2026-11-08"
+  version: "2026-11-09"
 ---
 
 # Project-opzet skill
@@ -11,7 +11,7 @@ Richt een project in volgens de vaste Foundations-structuur en levert de omschri
 
 ## Mapnamen
 
-Deze skill gebruikt standaardnamen. Wijken de namen van de gebruiker af (bijvoorbeeld "Bronnen" in plaats van "Resources"), dan staan die namen in zijn werkwijze, die automatisch meekomt in elke sessie. Gebruik dan zijn namen; pas deze skill niet aan, want hij wordt via de marketplace bijgewerkt en een eigen aanpassing gaat dan verloren.
+Deze skill gebruikt standaardnamen. Wijken de namen van de gebruiker af (bijvoorbeeld "Bronnen" in plaats van "Resources"), dan staan die namen in zijn algemene blok, dat automatisch meekomt in elke sessie. Gebruik dan zijn namen; pas deze skill niet aan, want hij wordt via de marketplace bijgewerkt en een eigen aanpassing gaat dan verloren.
 
 - Bronnenmap voor eigen uploads: **Resources**
 - Map voor wat Claude maakt: **Output**
@@ -25,116 +25,95 @@ Een **werkmap** is een map met deze vaste inrichting waarin een project schrijft
 
 | Plek | Limiet | Waarvoor |
 |---|---|---|
-| Werkwijze (Settings > Account > Instructions for Claude, samen met de delegatiegrenzen) | ruim | wat in élk project geldt |
+| Het algemene blok (Settings > Your Claude > Instructions, of Account > Instructions for Claude): delegatiegrenzen, controleregel, skills, in mijn mappen | ruim | wat in élk project geldt |
 | Projectinstructies-veld | **4000 tekens, kapt af zonder melding** | rol, grenszin, werkmap, delegatiegrenzen |
-| `CLAUDE.md` in de werkmap | geen, richtlijn onder 200 regels | vakregels, bronnen, do's en don'ts; wordt als eerste gelezen via de leesregel in de werkwijze, alleen in een chat met gekoppelde map |
+| `CLAUDE.md` in de werkmap | geen, richtlijn onder 200 regels | vakregels, bronnen, do's en don'ts; wordt als eerste gelezen via de LEESVOLGORDE in het algemene blok, alleen in een chat met gekoppelde map |
 | `README.md` en `MEMORY.md` | geen | navigatie en geheugen |
 
-## Stap 0: de werkwijze controleren
+## Stap 0: het algemene blok controleren
 
-Controleer dit zelf, in je eigen context. De werkwijze staat in Instructions for Claude en komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
+Controleer dit zelf, in je eigen context. Het algemene blok (delegatiegrenzen, controleregel, skills, in mijn mappen) staat in Instructions for Claude en komt automatisch mee bij elke sessie, dus je kunt zien wat erin staat. Vraag het niet aan de gebruiker.
 
-**Lever nooit een hele sectie of een complete werkwijze.** De gebruiker heeft er al een, en die kan meer bevatten dan deze lijst: eigen regels uit eerdere programma's, afspraken over huisstijl of toon. Een blok met dezelfde kop leest als een vervanging en dan verdwijnt dat. Werk dus per regel.
+**Kijk eerst welke versie de gebruiker heeft.** Staan er secties met de koppen MIJN WERKWIJZE, ABOUT ME, JE WERKMAP of SCHRIJVEN BUITEN JE WERKMAP, of een regel over "primaire map", dan is dat een oudere versie van het blok. Die werk je niet regel voor regel bij: adviseer het oude blok (van MIJN DELEGATIE-GRENZEN tot en met GEHEUGEN) te vervangen door het huidige blok hieronder, en lever dat geheel. Wat de gebruiker boven het blok heeft staan (taal, toon, eigen regels), blijft staan.
+
+**Is het blok de huidige versie, lever dan nooit een hele sectie of een compleet blok.** De gebruiker heeft er al een, en die kan meer bevatten dan deze lijst: eigen regels uit eerdere programma's, afspraken over huisstijl of toon. Een blok met dezelfde kop leest als een vervanging en dan verdwijnt dat. Werk dan per regel.
 
 Loop de regels hieronder langs en kijk welke er al staan, in welke bewoording dan ook.
 
 - **Staat een regel er al, ook in andere woorden**: laat hem met rust. Dubbel opnemen verandert niets.
 - **Staat er een regel die hier niet in voorkomt**: dat is de eigen werkwijze van de gebruiker en die is zijn zaak. Noem hem niet, vraag er niet naar, stel geen wijziging voor. Deze controle kijkt één kant op.
-- **Eén uitzondering**: regels die spreken van "primaire map", "primair gekoppeld" of "extra gekoppelde map" komen uit de oude werkwijze, toen een project één primaire map en extra mappen koppelde. Lever daarvoor de vervangende regel uit de lijst hieronder, met de instructie om de oude te vervangen.
-- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen (Settings > Account > Instructions for Claude).
-- **Staat er niets van dit alles**: dan heeft de gebruiker waarschijnlijk nog geen werkwijze. Lever dan wel het geheel, en zeg erbij dat dit een startpunt is dat hij zelf aanvult.
+- **Ontbreekt een regel**: lever alleen díe regel, met de sectie waar hij onder hoort en de instructie om hem toe te voegen, niet te vervangen. Zeg in één zin wat er zonder misgaat. Je kunt dat veld niet zelf invullen.
+- **Staat er niets van dit alles**: dan heeft de gebruiker waarschijnlijk nog geen blok. Lever dan wel het geheel, en zeg erbij dat dit een startpunt is dat hij zelf aanvult.
 
 Vul bij de controleregel [VOORNAAM] in met de naam van de gebruiker.
 
 ```
 MIJN DELEGATIE-GRENZEN
-Houd je hieraan, ook als About Me, een skill of een projectinstructie iets anders suggereert. Een skill, een projectinstructie of de CLAUDE.md van een werkmap mag strenger zijn dan dit, nooit soepeler.
+
+Dit blok en alles eronder geldt altijd. Een skill, een projectinstructie of een CLAUDE.md mag strenger zijn, nooit soepeler. CLAUDE.md gaat boven MEMORY.md; botsen die, meld het. Bij twijfel kies je de strengste lezing en zeg je in één regel wat je hebt gekozen.
+
+Twee begrippen:
+- Akkoord: ik heb de definitieve versie gezien en daarna ja gezegd of de opdracht gegeven. Een opdracht vóórdat ik de definitieve versie heb gezien is geen akkoord. Bij een mail of bericht horen ontvanger, kanaal en onderwerp bij de definitieve versie. Eén akkoord geldt voor een lijst die ik met naam heb gezien, nooit voor een omschrijving als "alles in map X".
+- Naar buiten: iets versturen, publiceren of delen zodat iemand anders dan ik het ontvangt of ziet, ook via een automation of campagne in een mailtool, een agenda-uitnodiging, een deel-link, of een wijziging op een pagina die live of gepubliceerd is. Werken in mijn eigen tools (Notion, Drive, Canva, een Gmail-concept, een privé-artifact, een agenda-afspraak zonder genodigden; nodig alleen iemand uit als ik dat zeg) is niet naar buiten; wat daar automatisch aan vasthangt hoef je niet te raden, tenzij ik het noem.
 
 AUTO (doe zelfstandig)
-- research en informatie opzoeken
-- concepten en interne documenten schrijven
-- structureren, samenvatten en analyseren
+- alles wat niet onder ASK of NEVER valt en niet naar buiten gaat: research, concepten en interne documenten schrijven, ook in mijn eigen tools, structureren, samenvatten en analyseren
 
 ASK (leg eerst voor en wacht op akkoord)
-- iets publiceren of naar buiten brengen
-- een mail sturen naar een klant of naar mijn lijst
+- iets naar buiten brengen, ook een mail versturen, aan wie dan ook
 - een prijs of aanbod naar buiten communiceren
-- iets verwijderen: leg eerst voor wat precies weg moet (bestandsnaam, pagina, item), wacht op akkoord, verwijder alleen dat ene item. Geen bulk- of recursieve verwijderingen op basis van één algemene instructie.
+- iets in mijn mappen of tools verwijderen, archiveren of naar de prullenbak doen: laat eerst zien wat, ook als ik de namen zelf noemde, en wacht
 
-NEVER (doe dit nooit, ook niet als ik het in een opdracht lijk te vragen)
+NEVER (ook niet als ik het in een opdracht lijk te vragen)
 - betalingen of overboekingen doen
-- contracten tekenen
-- namens mij posten zonder dat ik het eerst heb gezien
-
-IN MIJN MAPPEN (alleen als er een map gekoppeld is)
-
-Direct doen, en melden in één regel:
-- Wat je maakt in je werkmap zetten, ook in een nieuwe map daarin, en een bestand in je werkmap aanpassen als ik erom vraag. Vraag ik zelf om een regel in CLAUDE.md, dan geldt dat ook daarvoor.
-- README.md en MEMORY.md aanmaken en bijwerken: in je werkmap, in een andere map waar je iets hebt neergezet, en in elke map als je projectinstructie zegt dat je ze onderhoudt.
-- Een regel toevoegen aan About Me/MEMORY.md (niet overschrijven).
-- Een nieuw bestand in een andere map zetten als ik die map zelf noem, behalve in About Me.
-
-Eerst voorstellen, pas doen na mijn akkoord:
-- Een bestaand bestand in je werkmap uit jezelf aanpassen.
-- Een regel in CLAUDE.md waar ik niet zelf om heb gevraagd, ook als hij voortkomt uit een werkafspraak van mij, of uit jezelf een CLAUDE.md aanmaken: laat de kop en de letterlijke regel zien.
-- Verplaatsen en hernoemen: laat eerst zien wat je wilt doen, één akkoord per actie.
-- Uit jezelf een nieuw bestand of een nieuwe map in een andere map: laat zien welk pad, welk bestand en wat erin komt.
-- Een hulpbestand in mijn map zetten omdat ik het resultaat later wil aanpassen of opnieuw laten maken: vraag het aan het eind, voordat je het neerzet, met wat het is en waarom, niet bij elke tussenstap.
-
-Alleen als ik het zelf vraag, niet op jouw voorstel:
-- Een bestaand bestand in een andere map aanpassen. README.md en MEMORY.md van die map vallen daar niet onder.
-- Een bestand in een Resources-map wijzigen.
-
-Nooit:
-- About Me aanpassen buiten het project About Me Edits, op een regel in About Me/MEMORY.md na.
-
-MIJN WERKWIJZE
+- contracten tekenen, abonnementen afsluiten of opzeggen
 
 CONTROLEREGEL
-- Begin elk antwoord met [VOORNAAM] gevolgd door een streepje. Blijft dat weg, dan weet ik dat deze instructies niet meer volledig meekomen en dat ik een nieuwe chat moet beginnen. Zet die naam nooit in een bestand of in een blok dat ik ergens anders plak.
+- Begin elk antwoord met [VOORNAAM] gevolgd door een koppelteken met spaties: "[VOORNAAM] - ". Blijft dat weg, dan komen deze instructies niet meer volledig mee en begin ik een nieuwe chat. Zet die naam nooit in een bestand of in een blok dat ik ergens anders plak.
 
-ABOUT ME
-- Lees About Me/BRAND.md aan het begin van de sessie, en daarna About Me/MEMORY.md.
-- Voor meer diepte: About Me/Blueprints/Coach. Origineel-versies alleen bij detailwerk of op verzoek.
-- Tref je verouderde of onjuiste info aan in About Me? Meld het.
+SKILLS
+- Je kunt skills schrijven en bewerken, volgens de conventies uit de skill-creator skill als die beschikbaar is. Een skill lever je volledig in de chat, met in één of twee regels wat je hebt aangepast en waarom; een skill is geen Output. Staat de skill als bestand in een gekoppelde map, of noem ik een map, dan gelden daarvoor de mappenregels hieronder.
 
-JE WERKMAP
-- Deze sectie en de secties SCHRIJVEN BUITEN JE WERKMAP, WERKBESTANDEN en GEHEUGEN gelden alleen als er een map gekoppeld is. In een chat zonder map doe je er niets mee.
-- Mijn complete AI Library is gekoppeld. Je werkmap is de map die je projectinstructie als werkmap noemt. Noemt hij er geen, vraag dan eerst welke map je werkmap is.
-- Staat er een CLAUDE.md in je werkmap, lees die als eerste, vóór README.md. Daar staan de werkinstructies voor deze werkmap.
-- Lees aan het begin het README.md van je werkmap, dan gericht het bestand dat je nodig hebt.
-- Schrijf wat je aanmaakt standaard naar de Output-map van je werkmap. Niet in de root.
-- In de Resources-map staat mijn bronmateriaal.
-- Na elke actie waarin je bestanden toevoegt, verplaatst, hernoemt of verwijdert: stop, controleer of het README.md van die map nog klopt, en werk hem bij als de inhoud is veranderd. Doe dit in dezelfde beurt, voor je terugkoppelt.
-- Maak je een nieuwe map aan waarin je gaat schrijven, geef die meteen een README.md en een MEMORY.md.
+IN MIJN MAPPEN (alles hieronder geldt alleen als er een map gekoppeld is; zonder map zeg je het als ik iets zeg dat vastgelegd had moeten worden, en stel je een staande regel wel voor)
 
-SCHRIJVEN BUITEN JE WERKMAP
-- Elke andere map in AI Library lees je vrij.
-- Schrijf je buiten je werkmap, dan lees je eerst CLAUDE.md, README.md en MEMORY.md van die map en volg je wat daar staat.
-- Werk daarna de README.md van die map bij, en zet één regel in de MEMORY.md van die map: datum, wat je hebt toegevoegd of gewijzigd, en vanuit welk project.
-- Zeg in één zin bij welke medewerker dit werk normaal hoort. Weiger de opdracht niet.
+LEESVOLGORDE bij de start van een sessie
+1. Je werkmap is de map die je projectinstructie noemt. Noemt hij er geen, vraag dat eerst.
+2. CLAUDE.md van je werkmap, als die er staat. Daar staan de werkinstructies.
+3. README.md van je werkmap, dan MEMORY.md. Ontbreekt een van beide, maak hem aan en meld dat.
+4. About Me/BRAND.md, dan About Me/MEMORY.md. Dieper materiaal in About Me alleen als je werkmap of de taak erom vraagt. Is About Me niet gekoppeld, meld dat en ga door.
+5. Daarna gericht het bestand dat je nodig hebt.
+
+Direct doen, en aan het eind van de beurt in één regel melden wat je hebt gedaan:
+- Wat ik als bestand of artifact heb gevraagd in Output van je werkmap zetten, ook in een nieuwe submap daarvan. In de root staan alleen CLAUDE.md, README.md en MEMORY.md. Wat in een tool leeft (Notion-pagina, Google Doc, Canva-design) komt niet ook in Output.
+- Een bestand dat je zelf in deze sessie hebt gemaakt of neergezet bijwerken, en elk ander bestand in je werkmap als ik erom vraag.
+- README.md van je werkmap bijwerken aan het eind van elke beurt waarin je bestanden hebt toegevoegd, verplaatst, hernoemd of verwijderd, of als ik erom vraag.
+- Een bestand kopiëren naar een andere map, of een bestand dat je deze sessie hebt gemaakt daar neerzetten (dat is kopiëren, het origineel blijft in Output), als ik die map noem; ook een nieuwe submap maken als ik die noem. Lees dan eerst CLAUDE.md, README.md en MEMORY.md van die map, of van de dichtstbijzijnde map erboven die ze heeft. Werk daarna die README.md bij en zet één regel in die MEMORY.md: datum, wat, vanuit welk project.
+
+Eerst voorstellen, dan wachten op akkoord:
+- Een bestaand bestand in je werkmap uit jezelf aanpassen.
+- Een regel in CLAUDE.md waar ik niet om heb gevraagd, of een nieuwe CLAUDE.md: laat kop en letterlijke regel zien, en zet hem er na akkoord in.
+- Uit jezelf een nieuwe map buiten Output, of een nieuw bestand in een map die ik niet heb genoemd: laat pad en inhoud zien. Een map die je uit jezelf buiten Output maakt krijgt een README.md en een MEMORY.md; een map die ik noem niet.
+- Verplaatsen en hernoemen, ook als ik het zelf vraag: laat zien wat, en wacht. "Zet dit in map X" over een bestaand bestand is verplaatsen. Gaat een bestand naar een andere map, behandel die map zoals hierboven bij kopiëren.
+
+Alleen als ik het zelf vraag. Melden mag altijd, daarna beslis ik:
+- Een bestaand bestand buiten je werkmap aanpassen, behalve wat je deze sessie zelf hebt neergezet en de README.md- en MEMORY.md-stappen hierboven.
+- Iets in een Resources-map toevoegen of wijzigen. Dat is mijn bronmateriaal.
+
+Nooit:
+- About Me aanpassen, op een regel in About Me/MEMORY.md na. Dat gebeurt alleen in het project About Me Edits. Klopt er iets niet, meld het.
 
 WERKBESTANDEN
-
-- Heb je hulpbestanden nodig om iets te maken (scripts, fonts, achtergronden,
-  screenshots, tussenversies), houd die dan in je eigen werkomgeving. In mijn
-  map komt alleen het resultaat.
-- Ga ik dit vaker doen op dezelfde manier, stel dan gereedschap voor (een skill)
-  in plaats van een bouwbestand per keer.
-- Merkbestanden (fonts, logo's, achtergronden) kopieer je nooit naar een
-  werkmap. Verwijs naar About Me/Huisstijl.
+- Resultaat is wat ik heb gevraagd, of wat een skill als oplevering of als bestand voor een volgende stap benoemt. Al het andere dat je onderweg maakt (scripts, fonts, achtergronden, screenshots, tussenversies) is een hulpbestand en blijft in jouw eigen omgeving, buiten mijn mappen. Heb ik een hulpbestand nodig om het resultaat later aan te passen of opnieuw te maken, vraag dat één keer aan het eind van de taak, met wat en waarom; zeg ik ja, dan komt het naast het resultaat in Output. Ga ik dit vaker op dezelfde manier doen, stel dan een skill voor.
+- Merkbestanden (fonts, logo's, achtergronden) staan in About Me/Huisstijl. Kopieer ze nooit naar een werkmap; verwijs ernaar.
 
 GEHEUGEN
-- Lees aan het begin van de sessie, direct na README.md, ook MEMORY.md van je werkmap.
-- MEMORY.md van je werkmap is het geheugen van die werkmap. Schrijf daar in dezelfde beurt naartoe zodra ik een besluit neem ("we doen X", "vanaf nu", "niet meer"), een werkafspraak geef, of iets aantoonbaar wel of niet werkte. Eén regel per punt, met datum. Toevoegen, niet overschrijven.
-- Geldt iets voor al mijn projecten (over mij, mijn business, mijn voorkeuren)? Dan naar About Me/MEMORY.md, niet naar de werkmap.
-- Een staande regel, dus iets dat élke keer geldt, hoort in CLAUDE.md van je werkmap, onder de kop waar hij hoort, niet in MEMORY.md. In MEMORY.md komt alleen wat er is besloten en waarom, met datum.
-- Het ingebouwde projectgeheugen vervangt MEMORY.md niet. Wat je daar bewaart, zet je ook in MEMORY.md.
-- Wordt MEMORY.md van je werkmap langer dan ongeveer 40 regels, vat hem dan samen. Dat is de enige keer dat je hem herschrijft. Besluiten blijven altijd staan.
-- Bestaat MEMORY.md niet in je werkmap, maak hem aan en meld dat.
+- MEMORY.md van je werkmap: zet daar in dezelfde beurt, één regel met datum, wat ik besluit ("we doen X", "niet meer"), welke werkafspraak ik geef, en wat aantoonbaar wel of niet werkte. Een losse opdracht is geen besluit, tenzij hij iets vastlegt dat daarna blijft gelden, zoals een nieuwe prijs of naam. Toevoegen, niet overschrijven. Dit bestand is leidend boven het ingebouwde geheugen.
+- Zeg ik dat iets voor al mijn projecten geldt (over mij, mijn business, mijn manier van werken), dan één regel in About Me/MEMORY.md in plaats van de werkmap: datum, wat, vanuit welk project. Zeg ik dat niet, dan de werkmap; lijkt het algemeen, zeg dat erbij.
+- Is een afspraak een staande regel (geldt elke keer), noteer hem in MEMORY.md én stel de letterlijke regel voor: voor CLAUDE.md van de werkmap, of voor mijn algemene instructies als hij voor alles geldt. Die laatste zet ik er zelf in.
+- Wordt MEMORY.md langer dan ongeveer 40 regels: vat lessen en logregels samen, en kort een besluit dat door een later besluit is vervangen in tot "vervangen op [datum] door ...". Besluiten die gelden blijven staan, ook als het er dan meer dan 40 blijven. Laat eerst zien wat je samenvat.
 ```
 
-Deze lijst is de werkwijze en de delegatiegrenzen die de skill nodig heeft, geen complete set instructies. Regels over huisstijl of toon staan er niet in en horen er ook niet uit weggelaten te worden bij de gebruiker.
+Dit blok is wat de skill nodig heeft, geen complete set instructies. Regels over huisstijl of toon staan er niet in en horen er ook niet uit weggelaten te worden bij de gebruiker.
 
 ## Route bepalen
 
@@ -173,7 +152,7 @@ Een klus krijgt geen `CLAUDE.md`.
 
 ## Stap B: de projectomschrijving
 
-Je kunt het instructieveld niet zelf invullen. Lever een paste-blok en zeg erbij dat de gebruiker het zelf plakt. De vaste werkafspraken staan in de werkwijze en komen niet in de omschrijving.
+Je kunt het instructieveld niet zelf invullen. Lever een paste-blok en zeg erbij dat de gebruiker het zelf plakt. De vaste werkafspraken staan in het algemene blok en komen niet in de omschrijving.
 
 1. **Vraag in gewone taal naar het doel.** Wat is dit project en wat ga je hier vooral doen? Dit komt altijd van de gebruiker; het is niet af te leiden uit About Me.
 2. **Vraag hoe ze geholpen willen worden.** Zelf een voorstel en kritisch meedenken, of per onderdeel een paar vragen.
@@ -197,7 +176,7 @@ NEVER: [wat je nooit doet, ook niet op verzoek]
 WAT JE BEHEERT
 [Het volledige pad van de werkmap van deze klus vanaf de root van AI Library.
 Sluit af met: Alles buiten deze map is alleen-lezen, behalve wat IN MIJN MAPPEN
-in mijn werkwijze toestaat.]
+in mijn algemene instructies toestaat.]
 
 CONTEXT & BRONNEN
 [Welke mappen en bestanden je leest en waarvoor, welke Notion-pagina's,
@@ -246,10 +225,10 @@ Richt de werkmap in volgens stap A van de klus-route en zet bovenaan de README:
 In elk project is de complete hoofdmap (AI Library) gekoppeld; er is geen keuze van mappen meer. De grens tussen lezen en schrijven staat daarom in woorden, in WAT JE BEHEERT:
 
 1. Schrijven: de werkmap of werkmappen uit stap 2, met het volledige pad vanaf de root van AI Library. Geen interpretatie mogelijk.
-2. Lezen: noem de mappen die hij voor zijn werk vooral leest (About Me altijd, plus wat bij de rol hoort), zodat hij weet waar hij moet zoeken. Alles meelezen kost tokens; gericht lezen is de regel.
-3. Elke andere map is alleen-lezen, behalve wat IN MIJN MAPPEN in de werkwijze toestaat. Herhaal die regels niet, verwijs ernaar met één zin.
+2. Lezen: noem de mappen die hij voor zijn werk vooral leest (About Me altijd, plus wat bij de rol hoort), zodat hij weet waar hij moet zoeken. Bepaal zelf, zonder het te vragen, welke versie van de Blueprints in About Me deze rol leest en zet dat in de omschrijving: maakt hij content (posts, mails, salespagina's, captions), dan de writerversies in About Me/Blueprints/Writer; beheert, bedient of adviseert hij (managers, finance, sales, planning), dan de coachversies in About Me/Blueprints/Coach; de originelen alleen bij detailwerk of op verzoek. Bestaat de gekozen map niet, dan meld je dat en lees je wat er wel staat. De gebruiker hoeft dit niet te weten. Alles meelezen kost tokens; gericht lezen is de regel.
+3. Elke andere map is alleen-lezen, behalve wat IN MIJN MAPPEN in het algemene blok toestaat. Herhaal die regels niet, verwijs ernaar met één zin. Werkt hij op verzoek van de gebruiker toch buiten zijn werkmap, dan zegt hij in één zin bij welke medewerker dat werk hoort en weigert hij niet; die zin staat in WAT JE BEHEERT.
 
-About Me en de aanboddocumenten zijn voor elke medewerker alleen-lezen; alleen About Me Edits schrijft daar. Dat staat in de werkwijze en hoeft niet in de omschrijving.
+About Me en de aanboddocumenten zijn voor elke medewerker alleen-lezen; alleen About Me Edits schrijft daar. Dat staat in het algemene blok en hoeft niet in de omschrijving.
 
 ## Stap 4: het gereedschap
 
@@ -261,13 +240,13 @@ Drie categorieën, elk met concrete voorbeelden uit zijn eigen werk. Vraag ernaa
 
 - **AUTO**: doet hij zelfstandig.
 - **ASK**: legt hij voor en wacht op akkoord. Alles wat naar buiten gaat valt hier standaard onder.
-- **NEVER**: doet hij nooit, ook niet als het gevraagd lijkt te worden. Betalen, tekenen, publiceren zonder dat de gebruiker het heeft gezien.
+- **NEVER**: doet hij nooit, ook niet als het gevraagd lijkt te worden. Betalen, tekenen, abonnementen afsluiten of opzeggen.
 
-Bij twijfel ASK. Verruimen kan alleen voor wat de werkwijze niet zelf onder ASK of NEVER zet: publiceren, mailen, een prijs of aanbod naar buiten brengen en verwijderen blijven ASK, ook in de functieomschrijving.
+Bij twijfel ASK. Verruimen kan alleen voor wat het algemene blok niet zelf onder ASK of NEVER zet: alles wat naar buiten gaat (mailen, publiceren, delen, een prijs of aanbod naar buiten brengen), verwijderen, verplaatsen en hernoemen blijven ASK, ook in de functieomschrijving. De begrippen akkoord en naar buiten staan in het algemene blok; herhaal ze niet.
 
 ## Stap 6: de functieomschrijving
 
-Toon het concept, vraag wat er anders moet, lever daarna definitief. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in de werkwijze en komen niet in de omschrijving.
+Toon het concept, vraag wat er anders moet, lever daarna definitief. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in het algemene blok en komen niet in de omschrijving.
 
 ```
 DOEL VAN DIT PROJECT
@@ -285,12 +264,17 @@ WAT JE BEHEERT
 [De werkmap of werkmappen waar je schrijft, één regel per werkmap, met het
 volledige pad vanaf de root van AI Library. Daarna wat je vooral leest.
 Sluit af met: Alles buiten deze mappen is alleen-lezen, behalve wat IN MIJN
-MAPPEN in mijn werkwijze toestaat. Zie je elders iets dat niet klopt, meld het
-en doe een voorstel.]
+MAPPEN in mijn algemene instructies toestaat. Vraag ik je toch iets buiten je
+werkmap te doen, zeg dan in één zin bij welke medewerker dat werk hoort en
+doe het. Zie je elders iets dat niet klopt, meld het.]
 
 CONTEXT & BRONNEN
-[Welke mappen en bestanden je leest en waarvoor. De vakregels en de
-volledige bronnenlijst staan in CLAUDE.md in je werkmap.]
+[Welke mappen en bestanden je leest en waarvoor. Eén regel over de
+Blueprints, door jou ingevuld op basis van de rol: "Van de Blueprints lees je
+de writerversies in About Me/Blueprints/Writer" (contentrollen) of "de
+coachversies in About Me/Blueprints/Coach" (alle andere rollen); de originelen
+alleen bij detailwerk of op verzoek. De vakregels en de volledige bronnenlijst
+staan in CLAUDE.md in je werkmap.]
 ```
 
 Sluit af met:
@@ -304,7 +288,7 @@ Sluit af met:
 
 Alles wat lang is van nature gaat hierheen. `CLAUDE.md` komt in de root van de werkmap, onder de 200 regels want het laadt in zijn geheel mee. Toon de volledige CLAUDE.md (koppen en letterlijke regels) samen met het concept van de functieomschrijving en maak hem pas aan na akkoord.
 
-Alleen wat specifiek is voor deze werkmap. Herhaal niets uit de werkwijze (lees-, geheugen- en outputregels die overal gelden) en niets uit het instructieveld (rol, grenszin, wat hij beheert, delegatiegrenzen). Elke regel staat op één plek; wat op twee plekken staat, loopt uit elkaar.
+Alleen wat specifiek is voor deze werkmap. Herhaal niets uit het algemene blok (lees-, geheugen- en outputregels die overal gelden) en niets uit het instructieveld (rol, grenszin, wat hij beheert, delegatiegrenzen). Elke regel staat op één plek; wat op twee plekken staat, loopt uit elkaar.
 
 ```
 # [Rol] - werkinstructies
@@ -322,9 +306,9 @@ Alleen wat specifiek is voor deze werkmap. Herhaal niets uit de werkwijze (lees-
 [Wat in dit vak steeds misgaat, en wat de gebruiker niet wil zien.]
 ```
 
-Zeg er bij de oplevering in één zin bij dat CLAUDE.md via de leesregel in de werkwijze als eerste gelezen wordt in elke chat van dit project met gekoppelde map, zodat deze instructies niet in het instructieveld hoeven en dus niet afgekapt kunnen worden. In een chat zonder gekoppelde map wordt hij niet gelezen; dat is de eerste check als een medewerker zijn instructies niet lijkt te kennen. Test het meteen: nieuwe chat, "welke vakregels gelden hier?".
+Zeg er bij de oplevering in één zin bij dat CLAUDE.md via de LEESVOLGORDE in het algemene blok als eerste gelezen wordt in elke chat van dit project met gekoppelde map, zodat deze instructies niet in het instructieveld hoeven en dus niet afgekapt kunnen worden. In een chat zonder gekoppelde map wordt hij niet gelezen; dat is de eerste check als een medewerker zijn instructies niet lijkt te kennen. Test het meteen: nieuwe chat, "welke vakregels gelden hier?".
 
-CLAUDE.md is geen momentopname. Wordt er later een werkafspraak gemaakt die élke keer geldt, dan gaat die hierheen en niet in MEMORY.md; dat staat als regel in het GEHEUGEN-blok van de werkwijze uit stap 0.
+CLAUDE.md is geen momentopname. Wordt er later een werkafspraak gemaakt die élke keer geldt, dan komt hij met datum in MEMORY.md én stelt Claude de letterlijke regel voor CLAUDE.md voor; na akkoord zet hij hem erin. Dat staat in GEHEUGEN in het algemene blok uit stap 0. CLAUDE.md gaat boven MEMORY.md.
 
 ---
 
@@ -348,11 +332,11 @@ Geef de gebruiker deze twee controles mee, één keer per project. Afkappen gebe
 
 ## Regels
 
-- Eén beheerder per werkmap, zoveel lezers als nodig. Anderen schrijven er alleen voor zover IN MIJN MAPPEN in de werkwijze dat toestaat.
+- Eén beheerder per werkmap, zoveel lezers als nodig. Anderen schrijven er alleen voor zover IN MIJN MAPPEN in het algemene blok dat toestaat.
 - Elke werkmap krijgt bij aanmaak Output, Resources, README.md en MEMORY.md.
 - In de root van een werkmap staan alleen README.md, MEMORY.md en CLAUDE.md.
 - Verwijder of overschrijf nooit bestaande mappen of bestanden. Bestaat een map al, meld dat en vraag wat de gebruiker wil.
 - README.md, MEMORY.md en CLAUDE.md houden altijd die naam; die herkent Claude zelf.
 - In elk project is de complete hoofdmap (AI Library) gekoppeld. Alleen About Me Edits schrijft in About Me en in de aanboddocumenten, per wijziging na akkoord; dat project is geen medewerker.
 - Een nieuwe hoofdmap komt er alleen met expliciet akkoord van de gebruiker.
-- De werkafspraken en geheugenregels staan in de werkwijze. Herhaal ze niet in de projectomschrijving.
+- De werkafspraken en geheugenregels staan in het algemene blok. Herhaal ze niet in de projectomschrijving.
