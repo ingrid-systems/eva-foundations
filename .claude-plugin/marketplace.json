@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "EVA Foundations van Ingrid Staal: de assistenten, de adviseurs en het systeemgereedschap van het EVA-systeem als plugin. Ook voor EVA HQ-klanten.",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -32,7 +32,7 @@
       "name": "eva-system",
       "source": "./plugins/eva-system",
       "description": "Gereedschap voor je eigen EVA-systeem. Nu: project-opzet, de skill waarmee je HR Manager een klus of een medewerker inricht (werkmap, functieomschrijving als paste-blok, CLAUDE.md).",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "Ingrid Staal"
       },
