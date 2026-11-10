@@ -126,10 +126,12 @@ Stel deze vraag, ook als de gebruiker zelf al "project" zei:
 
 Twee checks voordat je bouwt:
 
-1. **Verdient dit een eigen project?** Alleen als het werk een ritme heeft en een geheugen: dingen die een volgende sessie moet weten. Eenmalig werk dat zijn resultaat in een bestaande werkmap achterlaat, is een losse chat waard. Levert de klus wel eigen materiaal op, dan krijgt hij een eigen map.
+1. **Verdient dit een eigen project?** Alleen als het werk een ritme heeft en een geheugen gaat opbouwen: dingen die een volgende sessie moet weten. Eenmalig werk dat zijn resultaat in een bestaande werkmap achterlaat, is een losse chat waard. Levert de klus wel eigen materiaal op, dan krijgt hij een eigen map.
 2. **Verdient de rol een eigen project?** Wie maakt, beheert of bedient wel. Wie alleen meedenkt of weegt niet: dat wordt een laag die je erbij roept in het project waar je toch al zit. Een uitvoerder naast een manager krijgt pas een eigen project als hij zwaar gereedschap draagt.
 
 Toets een rolnaam met: zou een mens dit doen als je het uitbesteedde? Zo nee, dan is het een taak, geen rol.
+
+Beide checks gaan over het werk, niet over wat er al in de map staat. Een werkmap met alleen README.md en MEMORY.md, of een lege werkmap, is het normale begin: de medewerker vult hem zelf vanaf zijn eerste klus. Een lege map is dus nooit een reden om geen medewerker aan te nemen of de opzet uit te stellen.
 
 Twijfelt de gebruiker, leg beide kanten één keer voor met de consequentie erbij en laat hen kiezen. Gok niet.
 
@@ -210,7 +212,7 @@ Leg de rolnaam voor met de grenszin erbij, één zin die zegt wat hij wel bezit 
 Elke werkmap heeft precies één beheerder: één project dat er schrijft. Lezen mag iedereen.
 
 1. Vraag of stel voor welke werkmap hij beheert. Meerdere werkmappen per medewerker mag; twee beheerders per werkmap niet.
-2. **Lees de README van die werkmap.** Staat er al een andere beheerder, meld dat als botsing en laat de gebruiker kiezen. Los het niet zelf op.
+2. **Lees de README van die werkmap.** Staat er al een andere beheerder, meld dat als botsing en laat de gebruiker kiezen. Los het niet zelf op. Staat er nog geen inhoud in de map, ga gewoon door: dat is het normale begin.
 3. Bestaat de werkmap niet, maak hem aan met de vaste inrichting uit stap A van de klus-route. Een werkmap zonder Output, Resources, README en MEMORY is geen werkmap.
 4. Een nieuwe hoofdmap alleen met expliciet akkoord. De structuur blijft zo beknopt mogelijk.
 
@@ -246,7 +248,7 @@ Bij twijfel ASK. Verruimen kan alleen voor wat het algemene blok niet zelf onder
 
 ## Stap 6: de functieomschrijving
 
-Toon het concept, vraag wat er anders moet, lever daarna definitief. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in het algemene blok en komen niet in de omschrijving.
+Toon het concept samen met de volledige CLAUDE.md uit stap 7, vraag wat er anders moet, lever daarna definitief. Het akkoord geldt voor beide tegelijk. De delegatiegrenzen staan direct na de rol: het veld kapt van onderaf af. De vaste werkafspraken staan in het algemene blok en komen niet in de omschrijving.
 
 ```
 DOEL VAN DIT PROJECT
@@ -277,12 +279,13 @@ alleen bij detailwerk of op verzoek. De vakregels en de volledige bronnenlijst
 staan in CLAUDE.md in je werkmap.]
 ```
 
+Maak na het akkoord eerst CLAUDE.md aan in de werkmap (stap 7) en lever pas daarna het blok. Het blok verwijst naar CLAUDE.md, dus zonder dat bestand mist de medewerker zijn vakregels en bronnenlijst.
+
 Sluit af met:
 
 1. "Kopieer dit blok en plak het in dit project onder Instructions (knop Edit). Ik kan dat veld niet zelf invullen."
-2. De twee controles uit "Na het plakken".
+2. De drie controles uit "Na het plakken".
 3. Eén regel over wat deze medewerker als eerste kan oppakken, zodat zijn MEMORY en README meteen gaan leven.
-4. Bij meer dan één medewerker tegelijk: neem ze één voor één aan en gebruik de eerste weken om te zien of de grenzen kloppen. Tien medewerkers die niets te doen hebben, is hetzelfde probleem als één vergaarbak.
 
 ## Stap 7: CLAUDE.md in de werkmap
 
@@ -324,11 +327,13 @@ Verhuisvolgorde: bronnenlijst, do's en don'ts, uitzonderingen op de standaardinr
 
 ## Na het plakken
 
-Geef de gebruiker deze twee controles mee, één keer per project. Afkappen gebeurt bij het plakken of het gebeurt niet, dus dit is eenmalig en hoeft daarna nooit meer.
+Geef de gebruiker deze controles mee, één keer per project: de eerste twee bij elk project, de derde alleen bij een medewerker. Afkappen gebeurt bij het plakken of het gebeurt niet, dus dit is eenmalig en hoeft daarna nooit meer.
 
 > Open een nieuwe chat in dit project en vraag: "Geef de laatste regel van je projectinstructies woordelijk terug." Komt die regel terug, dan is het veld compleet aangekomen. Komt hij niet terug, dan is hij afgekapt en moet er inhoud naar CLAUDE.md.
 
 > Vraag daarna: "In welke mappen schrijf jij, en waar niet? Geef de volledige paden." Noemt hij precies zijn eigen werkmap(pen) en zegt hij dat de rest alleen-lezen is, dan staat de grens. Noemt hij meer of minder, dan is WAT JE BEHEERT niet scherp genoeg.
+
+> Alleen bij een medewerker: vraag "Welke vakregels gelden hier? Noem de koppen uit je CLAUDE.md." Noemt hij de koppen, dan staat CLAUDE.md op zijn plek. Zegt hij dat er geen CLAUDE.md is, dan is stap 7 niet uitgevoerd: laat hem alsnog aanmaken in de root van de werkmap.
 
 ## Regels
 
